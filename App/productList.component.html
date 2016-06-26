@@ -1,0 +1,32 @@
+<a ng-link="['Add']" class="button button3">Add New Product</a>
+<div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Last Updated</th>
+                <th>Photo</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            <tr ng-repeat="item in model.Products">
+                <td>{{item.Name}}</td>
+                <td>{{item.Price}}</td>
+                <td>{{item.LastUpdated | date:'MM/dd/yyyy @ h:mma'}}</td>
+                <td>
+                    <IMG ng-src="{{item.Content}}" alt="{{item.PhotoName}}"> </IMG>
+                </td>
+                <td>
+                    <a ng-link="['Edit', {id:item.Id}]" class="button button3">Edit</a>
+                    <button ng-click='model.DeleteProduct(item.Id)' class="button button3">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
