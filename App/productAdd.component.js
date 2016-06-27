@@ -29,12 +29,19 @@
     var productAddController = function($http) {
         var model = this;
         model.Save = function() {
-            AddProduct($http, model.Product)
-                .then(function(responce) {
-                    model.$router.navigate(['List']);
-                }, function(error) {
-                    console.log(reason);
-                });
+            var isValid = true;
+
+            if (!model.Product || !model.Product.Name || !model.Product.Price) {
+                isValid = false;
+            }
+            if (isValid) {
+                AddProduct($http, model.Product)
+                    .then(function(responce) {
+                        model.$router.navigate(['List']);
+                    }, function(error) {
+                        console.log(reason);
+                    });
+            }
         }
     };
 

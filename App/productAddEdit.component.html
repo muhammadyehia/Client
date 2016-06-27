@@ -1,34 +1,37 @@
-
-<div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
-            <tr>
-                <td>Name</td>
-                <td>
-                    <input type="text" name="name" ng-model="model.Product.Name">
-                </td>
-            </tr>
-            <tr>
-                <td>Price</td>
-                <td>
-                    <input type="text" name="Price" ng-model="model.Product.Price">
-                </td>
-            </tr>
-            <tr>
-                <td>Photo</td>
-                <td>
-                    <IMG ng-src="{{model.Product.Content}}" alt="{{model.Product.PhotoName}}"> </IMG>
-                </td>
-                 <td>
-                   <input type="file" id="UploadPhoto" name="file" ng-click="model.uploadFile()"  />
-                </td>
-            </tr>
-            <tr>
-                <td><a ng-click="model.Save()" class="button button3">save</a></td>
-                <td>
-                    <a ng-link="['List']" class="button button3">Back to Products list</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<form>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input type="text" name="name" ng-model="model.Product.Name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>
+                        <input type="text" name="Price" ng-model="model.Product.Price" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Photo</td>
+                    <td>
+                        <IMG ng-src="{{model.Product.Content}}" alt="{{model.Product.PhotoName}}"> </IMG>
+                    </td>
+                    <td>
+                        <input type="file" id="UploadPhoto" name="file" ng-click="model.uploadFile()" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="" value="save" ng-click="model.Save()" class="button button3">
+                    </td>
+                    <td>
+                        <a ng-link="['List']" class="button button3">Back to Products list</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

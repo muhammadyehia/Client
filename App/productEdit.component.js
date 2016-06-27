@@ -19,9 +19,10 @@
             angular.forEach(files, function(file) {
                 fd.append('file', file);
             });
-        } else {
-            fd.append("OldPhotoChanged", false);
         }
+        //else {
+        //     fd.append("OldPhotoChanged", false);
+        // }
         fd.append("Name", product.Name);
         fd.append("Price", product.Price);
         return $http.put(url, fd, {
@@ -51,12 +52,18 @@
             });
         };
         model.Save = function() {
-            UpdateProduct($http, model.Product)
-                .then(function(responce) {
-                    model.$router.navigate(['List']);
-                }, function(error) {
-                    console.log(reason);
-                });
+            var isValid = true;
+            if (!model.Product || !model.Product.Name || !model.Product.Price) {
+                isValid = false;
+            }
+            if (isValid) {
+                UpdateProduct($http, model.Product)
+                    .then(function(responce) {
+                        model.$router.navigate(['List']);
+                    }, function(error) {
+                        console.log(reason);
+                    });
+            }
         }
     };
 
